@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Administrativo | Burg'r Club</title>
+<link rel="stylesheet" href="admin.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img src="logo.png" alt="Logo Burg'r Club" class="sidebar__logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+      <span class="sidebar__logo-fallback" style="display:none;">🍔</span>
+      <span class="sidebar__brand-text">Burg<strong>Club</strong></span>
+    </div>
+
+    <nav class="sidebar__nav">
+      <button class="sidebar__link is-active" data-view="dashboard">
+        <span class="sidebar__icon">📊</span> Dashboard
+      </button>
+      <button class="sidebar__link" data-view="pedidos">
+        <span class="sidebar__icon">🧾</span> Pedidos
+      </button>
+      <button class="sidebar__link" data-view="estoque">
+        <span class="sidebar__icon">📦</span> Estoque
+      </button>
+      <button class="sidebar__link" data-view="funcionarios"><span class="sidebar__icon">👥</span> Funcionários</button>
+    </nav>
+
+    <div class="sidebar__footer">
+      <p>Painel interno · Burg'r Club</p>
+    </div>
+  </aside>
+
+  <!-- ============ CONTEÚDO ============ -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="topbar__menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+      <h1 class="topbar__title" id="pageTitle">Tela Inicial</h1>
+      <div class="topbar__admin">
+        <span class="topbar__admin-avatar">A</span>
+        <span>Admin</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- ============ VIEW: DASHBOARD ============ -->
+      <section class="view is-active" id="view-dashboard">
+
+        <div class="priority-alert" id="priorityAlert" role="status"></div>
+        <div class="cards-grid">
+          <div class="stat-card">
+            <span class="stat-card__label">Pedidos Hoje</span>
+            <span class="stat-card__value" id="statPedidosHoje">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">Em Preparo</span>
+            <span class="stat-card__value" id="statEmPreparo">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">Faturamento</span>
+            <span class="stat-card__value" id="statFaturamento">R$ 0,00</span>
+          </div>
+          <div class="stat-card stat-card--alert">
+            <span class="stat-card__label">Estoque Baixo</span>
+            <span class="stat-card__value" id="statEstoqueBaixo">0</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel__title">Avisos Importantes</h2>
+          <ul class="avisos-list" id="avisosList">
+            <!-- Gerado dinamicamente via JS -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ VIEW: PEDIDOS ============ -->
+      <section class="view" id="view-pedidos"><p class="staff-note">Modo local: pedidos e cadastros são salvos neste navegador. Não são enviados ao Supabase nem sincronizados com outros dispositivos.</p>
+        <div class="view-header">
+          <h2 class="view-header__title">Pedidos</h2>
+          <button class="btn btn--primary" id="btnNovoPedido">+ Novo pedido</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nº</th>
+                <th>Cliente</th>
+                <th>Itens</th>
+                <th>Valor</th>
+                <th>Horário</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="pedidosTableBody">
+              <!-- Gerado dinamicamente via JS -->
+            </tbody>
+          </table>
+          <p class="table-empty" id="pedidosEmpty">Nenhum pedido cadastrado ainda.</p>
+        </div>
+      </section>
+
+      <!-- ============ VIEW: ESTOQUE ============ -->
+      <section class="view" id="view-estoque">
+        <div class="view-header">
+          <h2 class="view-header__title">Estoque</h2>
+          <button class="btn btn--primary" id="btnNovoItem">+ Novo item</button>
+        </div>
+
+        <div class="stock-legend"><span class="signal signal--red">● Crítico: até 3 unidades</span><span class="signal signal--yellow">● Atenção: até o mínimo</span><span class="signal signal--green">● Suficiente</span></div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Produto / Ingrediente</th>
+                <th>Categoria</th>
+                <th>Qtd. disponível</th>
+                <th>Qtd. mínima</th>
+                <th>Unidade</th>
+                <th>Situação</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="estoqueTableBody">
+              <!-- Gerado dinamicamente via JS -->
+            </tbody>
+          </table>
+          <p class="table-empty" id="estoqueEmpty">Nenhum item cadastrado ainda.</p>
+        </div>
+      </section>
+
+      <section class="view" id="view-funcionarios">
+        <div class="view-header"><div><h2 class="view-header__title">Equipe e proprietário</h2><p>Cadastre as pessoas que trabalham na hamburgueria.</p></div><button class="btn btn--primary" id="btnNovoFuncionario">+ Cadastrar pessoa</button></div>
+        <div class="table-wrap"><table class="data-table"><thead><tr><th>Nome</th><th>Função</th><th>Telefone</th><th>Tipo</th><th>Ações</th></tr></thead><tbody id="funcionariosTableBody"></tbody></table><p class="table-empty" id="funcionariosEmpty">Nenhuma pessoa cadastrada.</p></div>
+        <p class="staff-note">Os cadastros desta versão ficam salvos somente neste navegador. Eles não criam contas nem liberam acesso ao painel.</p>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ============ MODAL: NOVO / EDITAR PEDIDO ============ -->
+<div class="modal-overlay" id="modalPedido">
+  <div class="modal">
+    <div class="modal__header">
+      <h3 id="modalPedidoTitle">Novo pedido</h3>
+      <button class="modal__close" data-close-modal="modalPedido">✕</button>
+    </div>
+    <form id="formPedido" class="modal__form">
+      <input type="hidden" id="pedidoId">
+      <label>
+        Cliente
+        <input type="text" id="pedidoCliente" required placeholder="Nome do cliente">
+      </label>
+      <label>Produto do cardápio<select id="pedidoProdutos"></select></label>
+      <label>Quantidade<input type="number" id="pedidoQuantidade" value="1" min="1" max="999" step="1"></label>
+      <button type="button" class="btn btn--primary" id="btnAdicionarProduto">+ Adicionar produto</button>
+      <div id="pedidoLinhas" aria-live="polite"></div>
+      <div class="pedido-total">Total automático: <strong id="pedidoTotalCalculado">R$ 0,00</strong></div>
+      <input type="hidden" id="pedidoItens"><input type="hidden" id="pedidoValor">
+      <div class="modal__actions">
+        <button type="button" class="btn btn--ghost" data-close-modal="modalPedido">Cancelar</button>
+        <button type="submit" class="btn btn--primary">Salvar pedido</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ MODAL: NOVO / EDITAR ITEM DE ESTOQUE ============ -->
+<div class="modal-overlay" id="modalEstoque">
+  <div class="modal">
+    <div class="modal__header">
+      <h3 id="modalEstoqueTitle">Novo item de estoque</h3>
+      <button class="modal__close" data-close-modal="modalEstoque">✕</button>
+    </div>
+    <form id="formEstoque" class="modal__form">
+      <input type="hidden" id="itemId">
+      <label>
+        Nome do produto/ingrediente
+        <input type="text" id="itemNome" required placeholder="Ex: Pão brioche">
+      </label>
+      <label>
+        Categoria
+        <input type="text" id="itemCategoria" required placeholder="Ex: Pães, Carnes, Molhos...">
+      </label>
+      <div class="modal__row">
+        <label>
+          Quantidade disponível
+          <input type="number" id="itemQuantidade" required min="0" step="0.01">
+        </label>
+        <label>
+          Quantidade mínima
+          <input type="number" id="itemMinimo" required min="0" step="0.01">
+        </label>
+      </div>
+      <label>
+        Unidade
+        <input type="text" id="itemUnidade" required placeholder="Ex: un, kg, L">
+      </label>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--ghost" data-close-modal="modalEstoque">Cancelar</button>
+        <button type="submit" class="btn btn--primary">Salvar item</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalFuncionario"><div class="modal"><div class="modal__header"><h3 id="modalFuncionarioTitle">Cadastrar pessoa</h3><button class="modal__close" data-close-modal="modalFuncionario">✕</button></div><form id="formFuncionario" class="modal__form"><input type="hidden" id="funcionarioId"><label>Nome completo<input id="funcionarioNome" required maxlength="100"></label><label>Função<input id="funcionarioCargo" required maxlength="80" placeholder="Ex: Cozinheiro, caixa, gerente"></label><label>Telefone (opcional)<input id="funcionarioTelefone" type="tel" maxlength="30"></label><label>Tipo de cadastro<select id="funcionarioTipo"><option value="Funcionário">Funcionário</option><option value="Proprietário">Proprietário</option></select></label><div class="modal__actions"><button type="button" class="btn btn--ghost" data-close-modal="modalFuncionario">Cancelar</button><button type="submit" class="btn btn--primary">Salvar cadastro</button></div></form></div></div>
+<script src="admin.js"></script>
+</body>
+</html>

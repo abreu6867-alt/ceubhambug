@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burg'r Club Hamburgueria | Taguatinga Norte, Brasília</title>
+<meta name="description" content="Burg'r Club Hamburgueria - hambúrguer artesanal na grelha, cachorro-quente prensado, batatas e milk-shakes. Delivery em Taguatinga, Ceilândia e regiões próximas.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@500;700&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="style.css">
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#top" class="logo">
+    <img src="logo.png" alt="Burg'r Club" class="logo__image">
+</a>
+
+    <nav class="nav" id="nav">
+      <ul class="nav__list">
+        <li><a href="#top" class="nav__link">Início</a></li>
+        <li><a href="#cardapio" class="nav__link">Cardápio</a></li>
+        <li><a href="#combos" class="nav__link">Combos</a></li>
+        <li><a href="#sobre" class="nav__link">Sobre</a></li>
+        <li><a href="#avaliacoes" class="nav__link">Avaliações</a></li>
+        <li><a href="#localizacao" class="nav__link">Localização</a></li>
+        <li><a href="#contato" class="nav__link">Contato</a></li>
+      </ul>
+    </nav>
+
+    <a href="https://wa.me/5561998145130" target="_blank" rel="noopener" class="btn btn--primary btn--header">
+      Pedir agora
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero__texture" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__content" data-reveal>
+      <p class="eyebrow">Hamburgueria artesanal · Taguatinga Norte</p>
+      <h1 class="hero__title">Sabor de verdade<br>em cada mordida.</h1>
+      <p class="hero__subtitle">
+        Hambúrguer artesanal feito na grelha, ingredientes selecionados e aquele sabor que faz você voltar.
+      </p>
+      <div class="hero__actions">
+        <a href="https://wa.me/5561998145130" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+          Pedir agora
+        </a>
+        <a href="#cardapio" class="btn btn--ghost btn--lg">Ver cardápio</a>
+      </div>
+      <div class="hero__rating">
+        <span class="stars">★★★★★</span>
+        <span>Confira as avaliações no Google</span>
+      </div>
+    </div>
+
+    <div class="hero__media" data-reveal>
+      <div class="hero__photo-frame">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=80"
+             alt="Hambúrguer artesanal suculento com queijo derretido, grelhado na brasa"
+             class="hero__photo">
+        <span class="ticket-tag ticket-tag--hero">na brasa 🔥</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESTAQUES ============ -->
+<section class="section" id="cardapio">
+  <div class="container">
+    <div class="section__head" data-reveal>
+      <p class="eyebrow">Cardápio</p>
+      <h2 class="section__title">Cardápio do Club</h2>
+      <p class="section__lede">
+        Escolha sua categoria, explore os sabores e peça diretamente pelo WhatsApp. Valores transcritos das fotos do cardápio.
+      </p>
+    </div>
+
+    <div class="menu-filters" id="menu-filters" aria-label="Filtrar cardápio"></div>
+    <div class="grid grid--products" id="products-grid" data-reveal>
+      <!-- Produtos do cardápio são renderizados via JavaScript -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIFERENCIAIS ============ -->
+<section class="section section--muted">
+  <div class="container">
+    <div class="section__head" data-reveal>
+      <p class="eyebrow">Por que a galera volta</p>
+      <h2 class="section__title">Diferenciais da casa</h2>
+    </div>
+
+    <div class="grid grid--features" data-reveal>
+      <div class="feature-card">
+        <span class="feature-card__icon" aria-hidden="true">🔥</span>
+        <h3>Blend artesanal</h3>
+        <p>Hambúrguer preparado na grelha com sabor marcante.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card__icon" aria-hidden="true">🌿</span>
+        <h3>Ingredientes selecionados</h3>
+        <p>Produtos preparados com foco em qualidade.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card__icon" aria-hidden="true">🥫</span>
+        <h3>Molhos caseiros</h3>
+        <p>Molhos e maionese preparados pela casa.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card__icon" aria-hidden="true">🛵</span>
+        <h3>Delivery rápido</h3>
+        <p>Atendimento em Taguatinga, Ceilândia e regiões próximas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMBOS ============ -->
+<section class="combos" id="combos">
+  <div class="combos__texture" aria-hidden="true"></div>
+  <div class="container combos__inner" data-reveal>
+    <div class="combos__content">
+      <p class="eyebrow eyebrow--light">Combo</p>
+      <h2 class="combos__title">Combo perfeito para matar a fome 🍔🍟🥤</h2>
+      <p class="combos__text">
+        Hambúrguer + batata frita + bebida gelada. Tudo o que você precisa em um pedido só.
+      </p>
+      <a href="https://wa.me/5561998145130" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+        Quero meu combo
+      </a>
+      <p class="combos__note">* Confira os trios e acompanhamentos no cardápio acima.</p>
+    </div>
+    <div class="combos__media">
+      <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80"
+           alt="Combo de hambúrguer artesanal com batata frita e bebida">
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="section" id="sobre">
+  <div class="container about">
+    <div class="about__media" data-reveal>
+      <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=900&q=80"
+           alt="Ambiente da hamburgueria com hambúrgueres artesanais servidos na mesa">
+    </div>
+    <div class="about__content" data-reveal>
+      <p class="eyebrow">Quem somos</p>
+      <h2 class="section__title">Sobre a Burg'r Club</h2>
+      <p class="about__text">
+        A Burg'r Club é uma hamburgueria localizada em Taguatinga Norte criada para quem gosta de
+        hambúrguer artesanal, ingredientes de qualidade e muito sabor. Além dos hambúrgueres preparados
+        na grelha, a casa oferece cachorro-quente prensado, batatas, molhos caseiros, milk-shakes e
+        outras opções.
+      </p>
+      <ul class="about__tags">
+        <li>Hambúrgueres na grelha</li>
+        <li>Cachorro-quente prensado</li>
+        <li>Batatas fritas</li>
+        <li>Milk-shakes</li>
+        <li>Molhos caseiros</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AVALIAÇÕES ============ -->
+<section class="section section--muted" id="avaliacoes">
+  <div class="container">
+    <div class="section__head" data-reveal>
+      <p class="eyebrow">Avaliações</p>
+      <h2 class="section__title">Quem prova, recomenda.</h2>
+      <p class="section__lede">Veja as avaliações diretamente nas plataformas oficiais antes de fazer seu pedido.</p>
+    </div>
+
+    <div class="grid grid--reviews" data-reveal style="display:none">
+      <article class="review-ticket">
+        <span class="stars">★★★★★</span>
+        <p>Ambiente confortável e atendimento excelente. O hambúrguer chegou quentinho e o molho caseiro faz toda a diferença.</p>
+        <span class="review-ticket__tag">Cliente Google</span>
+      </article>
+      <article class="review-ticket">
+        <span class="stars">★★★★★</span>
+        <p>Comida saborosa, ingredientes de qualidade e ótimo custo-benefício. Já virou parada certa por aqui.</p>
+        <span class="review-ticket__tag">Cliente Google</span>
+      </article>
+      <article class="review-ticket">
+        <span class="stars">★★★★★</span>
+        <p>Os molhos caseiros são o diferencial. Atendimento atencioso do início ao fim do pedido.</p>
+        <span class="review-ticket__tag">Cliente Google</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DELIVERY ============ -->
+<section class="delivery">
+  <div class="container delivery__inner" data-reveal>
+    <h2 class="delivery__title">Bateu a fome?</h2>
+    <p class="delivery__text">Peça seu Burg'r favorito sem sair de casa.</p>
+    <p class="delivery__regions">Entregamos em QNL, QNJ, QNM, Taguatinga, Ceilândia e regiões próximas.</p>
+    <a href="https://wa.me/5561998145130" target="_blank" rel="noopener" class="btn btn--primary btn--xl">
+      <span aria-hidden="true">💬</span> Pedir pelo WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ============ LOCALIZAÇÃO ============ -->
+<section class="section" id="localizacao">
+  <div class="container location">
+    <div class="location__info" data-reveal>
+      <p class="eyebrow">Onde estamos</p>
+      <h2 class="section__title">Localização</h2>
+      <address class="location__address">
+        <strong>Burg'r Club Hamburgueria</strong><br>
+        Taguatinga Norte EQNL 9/11<br>
+        Taguatinga - Brasília - DF<br>
+        CEP 72151-500
+      </address>
+      <p class="location__phone">📞 <a href="tel:+5561998145130">(61) 99814-5130</a></p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Taguatinga+Norte+EQNL+9%2F11+Taguatinga+Bras%C3%ADlia+DF"
+         target="_blank" rel="noopener" class="btn btn--outline">
+        Como chegar
+      </a>
+
+      <div class="hours" id="horarios">
+        <h3>Horário de funcionamento</h3>
+        <ul class="hours__list" id="hours-list">
+          <!-- Placeholder visual - horários oficiais a inserir -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="location__map" data-reveal>
+      <div class="map-placeholder">
+        <iframe
+          title="Mapa - Burg'r Club Hamburgueria"
+          src="https://www.google.com/maps?q=Taguatinga+Norte+EQNL+9/11+Taguatinga+Bras%C3%ADlia+DF&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<section class="section section--muted">
+  <div class="container">
+    <div class="section__head" data-reveal>
+      <p class="eyebrow">Redes sociais</p>
+      <h2 class="section__title">Acompanhe o Club</h2>
+      <p class="section__lede">@burgrclub</p>
+      <a href="https://instagram.com/burgrclub" target="_blank" rel="noopener" class="btn btn--outline">
+        Seguir no Instagram
+      </a>
+    </div>
+
+    <div class="insta-grid" data-reveal>
+      <div class="insta-grid__item"><img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=500&q=70" alt="Hambúrguer artesanal Burg'r Club"></div>
+      <div class="insta-grid__item"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=500&q=70" alt="Detalhe de hambúrguer com queijo derretido"></div>
+      <div class="insta-grid__item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=70" alt="Porção de batatas fritas crocantes"></div>
+      <div class="insta-grid__item"><img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=500&q=70" alt="Hambúrguer artesanal servido em tábua de madeira"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="contato">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo__mark">B<span class="logo__mark--accent">'</span>R</span>
+      <span class="logo__text">Burg'r <strong>Club</strong></span>
+      <p>Hamburgueria artesanal em Taguatinga Norte, Brasília - DF.</p>
+    </div>
+
+    <div class="footer__col">
+      <h3>Contato</h3>
+      <p>Taguatinga Norte EQNL 9/11<br>Taguatinga - Brasília - DF<br>CEP 72151-500</p>
+      <p><a href="https://wa.me/5561998145130" target="_blank" rel="noopener">(61) 99814-5130 · WhatsApp</a></p>
+      <p><a href="https://instagram.com/burgrclub" target="_blank" rel="noopener">@burgrclub</a></p>
+    </div>
+
+    <div class="footer__col">
+      <h3>Links rápidos</h3>
+      <ul>
+        <li><a href="#cardapio">Cardápio</a></li>
+        <li><a href="#combos">Combos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>© Burg'r Club Hamburgueria. Todos os direitos reservados.</p>
+    <p class="footer__academic">Projeto acadêmico desenvolvido para o Projeto Integrador I.</p>
+  </div>
+</footer>
+
+<!-- Botão flutuante do WhatsApp -->
+<a href="https://wa.me/5561998145130" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Pedir pelo WhatsApp">
+  💬
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
